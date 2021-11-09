@@ -6,11 +6,12 @@ public class player : MonoBehaviour
 {
 
     public float moveSpeed;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class player : MonoBehaviour
         rubyMove = transform.position;
         rubyMove.x = rubyMove.x + Input.GetAxis("Horizontal") * moveSpeed;
         rubyMove.y = rubyMove.y + Input.GetAxis("Vertical") * moveSpeed;
-        transform.position = rubyMove;
+        //transform.position = rubyMove;
+        rb.MovePosition(rubyMove);
     }
 }

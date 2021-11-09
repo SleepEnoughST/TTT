@@ -47,3 +47,6 @@ TagManager:
   - name: people
     uniqueID: 399474199
     locked: 0
+  - name: building
+    uniqueID: 356653325
+    locked: 0
