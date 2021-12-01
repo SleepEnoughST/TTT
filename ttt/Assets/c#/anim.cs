@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class anim : MonoBehaviour
 {
@@ -12,11 +13,19 @@ public class anim : MonoBehaviour
     public Rigidbody2D rb;         //定義剛體 (移動用)
 
     public float Speed = 10;
+
+    [Header("最高血量")]
+    public int MaxHealth = 5;
+    [Header("當前血量"), Range(0, 5)]
+    public int CurrentHealth;
         
     void Start()
     {
         animator = GetComponent<Animator>();  //遊戲啟動取得 動畫控制元件
         rb = GetComponent<Rigidbody2D>();     //遊戲啟動取得 剛體元件
+
+        CurrentHealth = MaxHealth;
+        print("Ruby當前血量為:" + CurrentHealth);
     }
     
 
@@ -25,8 +34,8 @@ public class anim : MonoBehaviour
         Position = transform.position;                 //把目前物件的位置給予ruby
         float horizontal = Input.GetAxis("Horizontal");//擷取左右按鍵的數值
         float vertical = Input.GetAxis("Vertical");    //擷取上下按鍵的數值
-        print("Horizontal is:" + horizontal);          //檢查用 (顯示按鍵數值)
-        print("Vertical is:" + vertical);              //檢查用 (顯示按鍵數值)
+        //print("Horizontal is:" + horizontal);          //檢查用 (顯示按鍵數值)
+        //print("Vertical is:" + vertical);              //檢查用 (顯示按鍵數值)
 
         Move = new Vector2(horizontal, vertical);      //把按鍵的數值給予 rubyMove
 
@@ -45,5 +54,19 @@ public class anim : MonoBehaviour
         //移動 ruby 位置
         Position = Position + Speed * Move * Time.deltaTime;
         rb.MovePosition(Position);  //使用剛體進行移動
+
+        if (CurrentHealth == 0)
+        {
+            Application.LoadLevel("場景");
+        }
+            
     }
+
+    public void ChangeHealth(int amout)
+    {
+        //CurrentHealth = CurrentHealth + amout;
+        CurrentHealth = Mathf.Clamp(CurrentHealth + amout, 0, MaxHealth);
+        print("Ruby 當前血量為:" + CurrentHealth);
+    }
+        
 }
