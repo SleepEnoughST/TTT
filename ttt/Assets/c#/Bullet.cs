@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
     //【未擊中目標的子彈自動銷毀 1/1】以距離來計算
     void Update()
     {
-        if (transform.position.magnitude > 100)
+        if (transform.position.magnitude > 20)
         {
             Destroy(gameObject);
         }
