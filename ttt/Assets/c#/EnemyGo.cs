@@ -25,7 +25,8 @@ public class EnemyGo : MonoBehaviour
     public bool broken = true; //初始設定為故障，所以具危險性，會亂走(需要維修)
 
     //【關閉煙霧特效 1/2】：使用關閉特效機制
-    public ParticleSystem SmokeEffect;
+
+    public ParticleSystem smokeEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -119,7 +120,7 @@ public class EnemyGo : MonoBehaviour
         enemyAnimator.SetTrigger("Fixed");
 
         //【關閉煙霧特效 2/2】
-        SmokeEffect.Stop();
-        //Destroy(SmokeEffect); //此方式也可以，但粒子會瞬間消失，沒有 fu
+        smokeEffect.Stop();
+
     }
 }
