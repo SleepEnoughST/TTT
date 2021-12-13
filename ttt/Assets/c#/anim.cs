@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class anim : MonoBehaviour
 {
+    #region 欄位
     private Vector2 LookDirection; //定義看的方向
     private Vector2 Position;      //定義位置
     private Vector2 Move;          //定義移動量
@@ -18,7 +19,10 @@ public class anim : MonoBehaviour
     public int MaxHealth = 5;
     [Header("當前血量"), Range(0, 5)]
     public int CurrentHealth;
-        
+
+    public GameObject projectilePrefab;
+
+    #endregion
     void Start()
     {
         animator = GetComponent<Animator>();  //遊戲啟動取得 動畫控制元件
@@ -59,6 +63,11 @@ public class anim : MonoBehaviour
         {
             Application.LoadLevel("場景");
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Launch();
+        }
             
     }
 
@@ -69,4 +78,14 @@ public class anim : MonoBehaviour
         print("Ruby 當前血量為:" + CurrentHealth);
     }
         
+    private void Launch()
+    {
+        GameObject projectileOnject = Instantiate(projectilePrefab, rb.position, Quaternion.identity);
+
+        Bullet bullet = projectileOnject.GetComponent<Bullet>();
+
+        bullet.Launch(LookDirection, 300);
+
+        animator.SetTrigger("Launch");
+    }
 }
