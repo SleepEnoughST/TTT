@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickE: {fileID: 2590690137114509797, guid: a29dda85e14936542b9c5b89a71a5e9f, type: 3}
+  audioClip: {fileID: 8300000, guid: af5f8b64e3f58f24c87ff8f789b04f6c, type: 3}
 --- !u!58 &7056366050947948681
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -121,6 +121,6 @@ public class EnemyGo : MonoBehaviour
 
         //【關閉煙霧特效 2/2】
         smokeEffect.Stop();
-
+        
     }
 }

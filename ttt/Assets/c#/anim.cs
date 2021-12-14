@@ -22,11 +22,16 @@ public class anim : MonoBehaviour
 
     public GameObject projectilePrefab;
 
+    private AudioSource audioSource;
+    public AudioClip playerHit;
+    public AudioClip bulletShot;
+
     #endregion
     void Start()
     {
         animator = GetComponent<Animator>();  //遊戲啟動取得 動畫控制元件
         rb = GetComponent<Rigidbody2D>();     //遊戲啟動取得 剛體元件
+        audioSource = GetComponent<AudioSource>();
 
         CurrentHealth = MaxHealth;
         print("Ruby當前血量為:" + CurrentHealth);
@@ -77,7 +82,7 @@ public class anim : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth + amout, 0, MaxHealth);
         print("Ruby 當前血量為:" + CurrentHealth);
     }
-        
+
     private void Launch()
     {
         GameObject projectileOnject = Instantiate(projectilePrefab, rb.position, Quaternion.identity);
@@ -87,5 +92,12 @@ public class anim : MonoBehaviour
         bullet.Launch(LookDirection, 300);
 
         animator.SetTrigger("Launch");
+    }    
+    
+    public void PlaySound(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip);
+        PlaySound(playerHit);
+        PlaySound(bulletShot);
     }
 }

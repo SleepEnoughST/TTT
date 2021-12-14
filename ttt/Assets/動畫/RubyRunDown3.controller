@@ -164,7 +164,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -130, y: 230, z: 0}
   m_EntryPosition: {x: -70, y: 160, z: 0}
-  m_ExitPosition: {x: -380, y: 310, z: 0}
+  m_ExitPosition: {x: -390, y: 340, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2710955412396609265}
 --- !u!1101 &-897549632314164458
@@ -248,7 +248,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\u89D2\u8272\u767C\u5C04\u4E0B"
+  m_Name: "\u89D2\u8272\u767C\u5C04"
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
