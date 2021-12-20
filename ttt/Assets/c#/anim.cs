@@ -81,6 +81,10 @@ public class anim : MonoBehaviour
         //CurrentHealth = CurrentHealth + amout;
         CurrentHealth = Mathf.Clamp(CurrentHealth + amout, 0, MaxHealth);
         print("Ruby 當前血量為:" + CurrentHealth);
+        if (amout < 0 )
+        {
+            PlaySound(playerHit);
+        }
     }
 
     private void Launch()
@@ -92,12 +96,11 @@ public class anim : MonoBehaviour
         bullet.Launch(LookDirection, 300);
 
         animator.SetTrigger("Launch");
+        PlaySound(bulletShot);
     }    
     
     public void PlaySound(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
-        PlaySound(playerHit);
-        PlaySound(bulletShot);
     }
 }

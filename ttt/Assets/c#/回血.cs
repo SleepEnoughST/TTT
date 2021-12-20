@@ -15,7 +15,6 @@ public class 回血 : MonoBehaviour
         print("碰到的東西是:" + Ruby);
 
         Ruby.PlaySound(audioClip);
-
         Ruby.ChangeHealth(1);
         Destroy(gameObject);
     }
