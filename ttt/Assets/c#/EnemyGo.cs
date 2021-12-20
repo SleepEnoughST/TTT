@@ -28,8 +28,8 @@ public class EnemyGo : MonoBehaviour
 
     public ParticleSystem smokeEffect;
     private AudioSource audioSource;
-    public AudioClip RobotHit;
-    public AudioClip[] RobotHits;
+    public AudioClip robotHit;
+    public AudioClip[] robotHits;
     public AudioClip fixedSound;
 
     // Start is called before the first frame update
@@ -44,6 +44,7 @@ public class EnemyGo : MonoBehaviour
         //【動畫混合樹 2/4】
         enemyAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -82,6 +83,7 @@ public class EnemyGo : MonoBehaviour
 
         //【動畫混合樹 4/4】
         PlayMoveAnimation();
+
 
     }
 
@@ -127,12 +129,19 @@ public class EnemyGo : MonoBehaviour
         //【關閉煙霧特效 2/2】
         smokeEffect.Stop();
 
-        //AudioSource.Destroy(audioSource);
-        Invoke("FixedPlaySound", 0.5f);
+        int RandomNum = Random.Range(0, 2);
+        //audioSource.PlayOneShot(RobotHit);
+        print("RandomNum is ：" + RandomNum);
+        audioSource.PlayOneShot(robotHits[RandomNum]);
+
+        Invoke("FixedPlaySound", 1f);
     }
 
     public void FixedPlaySound()
     {
         audioSource.PlayOneShot(fixedSound);
+       
     }
+
+
 }
